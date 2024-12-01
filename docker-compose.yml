@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:14
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: hammersystems
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: asd228asd
+    network_mode: host
+
+  web:
+    build: ./hammer
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./hammer:/app
+    depends_on:
+      - db
+    environment:
+      - DJANGO_DB_HOST=localhost
+      - DJANGO_DB_PORT=5432
+      - DJANGO_DB_NAME=hammer_systems
+      - DJANGO_DB_USER=postgres
+      - DJANGO_DB_PASSWORD=asd228asd
+    network_mode: host
+
+volumes:
+  postgres_data:

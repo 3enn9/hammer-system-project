@@ -1,0 +1,25 @@
+<h1>Ваш профиль</h1>
+<p><strong>Номер телефона:</strong> {{ user.phone_number }}</p>
+<p><strong>Реферальный код:</strong> {{ user.invite_code }}</p>
+<p><strong>Дата регистрации:</strong> {{ user.date_joined }}</p>
+
+{% if user.activate_invite_code %}
+<p><strong>Вы уже активировали инвайт код</strong></p>
+{% else %}
+<form method="post">
+  {% csrf_token %}
+  <label for="invite_code">Введите реферальный код:</label>
+  <input type="text" id="invite_code" name="invite_code" required />
+  <button type="submit">Отправить</button>
+</form>
+{% endif %}
+
+<p><a href="{% url 'logout' %}">Выйти</a></p>
+
+{% if messages %}
+<ul>
+  {% for message in messages %}
+  <li>{{ message }}</li>
+  {% endfor %}
+</ul>
+{% endif %}
