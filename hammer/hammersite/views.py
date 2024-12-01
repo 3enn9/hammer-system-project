@@ -109,7 +109,6 @@ def profile_view(request):
 
 
 class ProfileView(APIView):
-    permission_classes = [IsAuthenticated]  # Только авторизованные пользователи
 
     def get(self, request):
         user = request.user

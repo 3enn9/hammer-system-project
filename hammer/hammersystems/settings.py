@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'hammersite',
     'rest_framework',
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
@@ -82,7 +83,7 @@ DATABASES = {
         'NAME': os.getenv('DJANGO_DB_NAME', 'hammer_systems'),
         'USER': os.getenv('DJANGO_DB_USER', 'postgres'),
         'PASSWORD': os.getenv('DJANGO_DB_PASSWORD', 'asd228asd'),
-        'HOST': os.getenv('DJANGO_DB_HOST', 'db'),
+        'HOST': os.getenv('DJANGO_DB_HOST', 'localhost'),
         'PORT': os.getenv('DJANGO_DB_PORT', '5432'),
     }
 }
